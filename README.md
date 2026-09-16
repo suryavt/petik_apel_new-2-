@@ -1,0 +1,1 @@
+jalankan env terlebih dahulu
