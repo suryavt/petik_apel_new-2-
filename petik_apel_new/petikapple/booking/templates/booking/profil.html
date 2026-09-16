@@ -1,0 +1,401 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<!-- Profil Section -->
+<section class="profil-section py-5">
+    <div class="container">
+        <!-- Judul Profil -->
+        <div class="text-center mb-5">
+            <h1 class="display-4 fw-bold text-gradient-primary animate__animated animate__fadeIn">
+                Profil Kebun Apel
+            </h1>
+            <div class="divider mx-auto bg-gradient-primary"></div>
+        </div>
+
+        <!-- Tentang Kami -->
+        <div class="row align-items-center mb-5 py-4">
+            <div class="col-lg-6 mb-4 mb-lg-0">
+                <div class="image-container rounded-4 overflow-hidden shadow-lg animate__animated animate__fadeInLeft">
+                    <img src="{% static 'carousel/4.jpg' %}" alt="Tentang Kami" class="img-fluid w-100 hover-zoom">
+                    <div class="image-overlay"></div>
+                </div>
+            </div>
+            <div class="col-lg-6 ps-lg-5">
+                <div class="section-header mb-4 animate__animated animate__fadeInRight">
+                    <span class="badge bg-primary-soft mb-2">Tentang Kami</span>
+                    <h2 class="mb-3">Mengenal Kebun Apel Petik Apel</h2>
+                </div>
+                <p class="lead text-muted mb-4 animate__animated animate__fadeInRight">
+                    Kebun Apel Petik Apel adalah destinasi wisata kebun apel alami yang menawarkan pengalaman memetik apel langsung dari pohonnya dengan pemandangan alam yang memukau.
+                </p>
+                <div class="d-flex mb-3 animate__animated animate__fadeInRight">
+                    <div class="me-4">
+                        <div class="icon-circle bg-primary-soft text-primary">
+                            <i class="fas fa-leaf"></i>
+                        </div>
+                    </div>
+                    <div>
+                        <p class="mb-0">
+                            Dengan luas area lebih dari 10 hektar, kebun kami memiliki berbagai jenis apel premium yang siap dipetik oleh pengunjung.
+                        </p>
+                    </div>
+                </div>
+                <div class="d-flex animate__animated animate__fadeInRight">
+                    <div class="me-4">
+                        <div class="icon-circle bg-primary-soft text-primary">
+                            <i class="fas fa-heart"></i>
+                        </div>
+                    </div>
+                    <div>
+                        <p class="mb-0">
+                            Kami berkomitmen pada pertanian berkelanjutan dan pengalaman wisata yang autentik bagi seluruh keluarga.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Visi & Misi -->
+        <div class="row align-items-center mb-5 py-4 bg-light rounded-4">
+            <div class="col-lg-6 order-lg-2 mb-4 mb-lg-0">
+                <div class="image-container rounded-4 overflow-hidden shadow-lg animate__animated animate__fadeInRight">
+                    <img src="{% static 'carousel/5.jpg' %}" alt="Visi & Misi" class="img-fluid w-100 hover-zoom">
+                    <div class="image-overlay"></div>
+                </div>
+            </div>
+            <div class="col-lg-6 pe-lg-5 order-lg-1">
+                <div class="section-header mb-4 animate__animated animate__fadeInLeft">
+                    <span class="badge bg-success-soft mb-2">Visi & Misi</span>
+                    <h2 class="mb-3">Arah dan Tujuan Kami</h2>
+                </div>
+                
+                <div class="vision-mission-item animate__animated animate__fadeInLeft">
+                    <div class="d-flex align-items-start mb-4">
+                        <div class="icon-circle bg-success-soft text-success me-3">
+                            <i class="fas fa-bullseye"></i>
+                        </div>
+                        <div>
+                            <h4 class="h5">Visi Kami</h4>
+                            <p class="text-muted mb-0">
+                                Menjadi destinasi wisata kebun apel terdepan di Indonesia dengan pengalaman memetik apel yang unik dan berkesan.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="vision-mission-item animate__animated animate__fadeInLeft">
+                    <div class="d-flex align-items-start">
+                        <div class="icon-circle bg-success-soft text-success me-3">
+                            <i class="fas fa-tasks"></i>
+                        </div>
+                        <div>
+                            <h4 class="h5">Misi Kami</h4>
+                            <ul class="text-muted mission-list">
+                                <li>Menjaga kelestarian alam dan keaslian kebun apel</li>
+                                <li>Menyediakan apel berkualitas tinggi dengan budidaya ramah lingkungan</li>
+                                <li>Menciptakan pengalaman wisata edukatif yang menyenangkan</li>
+                                <li>Mengembangkan ekonomi lokal melalui pariwisata berkelanjutan</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Keunggulan Kebun -->
+        <div class="row mb-5 py-4">
+            <div class="col-12 text-center mb-5">
+                <div class="section-header">
+                    <span class="badge bg-warning-soft mb-2 animate__animated animate__fadeIn">Keunggulan</span>
+                    <h2 class="mb-3 animate__animated animate__fadeIn">Apa yang Membuat Kami Spesial</h2>
+                    <p class="lead text-muted mx-auto animate__animated animate__fadeIn" style="max-width: 700px;">
+                        Kami bangga menawarkan pengalaman wisata kebun apel yang berbeda dari yang lain
+                    </p>
+                </div>
+            </div>
+            
+            <div class="col-md-4 mb-4">
+                <div class="card border-0 shadow-sm h-100 hover-lift animate__animated animate__fadeInUp">
+                    <div class="card-body p-4 text-center">
+                        <div class="icon-xl bg-primary-soft text-primary rounded-circle mb-4">
+                            <i class="fas fa-tree"></i>
+                        </div>
+                        <h4 class="mb-3">Kebun Alami</h4>
+                        <p class="text-muted">
+                            Dikelola secara organik tanpa bahan kimia berbahaya, menjaga ekosistem alami.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-4 mb-4">
+                <div class="card border-0 shadow-sm h-100 hover-lift animate__animated animate__fadeInUp animate__delay-1s">
+                    <div class="card-body p-4 text-center">
+                        <div class="icon-xl bg-success-soft text-success rounded-circle mb-4">
+                            <i class="fas fa-apple-alt"></i>
+                        </div>
+                        <h4 class="mb-3">Apel Segar</h4>
+                        <p class="text-muted">
+                            Nikmati apel segar langsung dari pohon dengan berbagai varietas premium.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-4 mb-4">
+                <div class="card border-0 shadow-sm h-100 hover-lift animate__animated animate__fadeInUp animate__delay-2s">
+                    <div class="card-body p-4 text-center">
+                        <div class="icon-xl bg-warning-soft text-warning rounded-circle mb-4">
+                            <i class="fas fa-leaf"></i>
+                        </div>
+                        <h4 class="mb-3">Lingkungan Asri</h4>
+                        <p class="text-muted">
+                            Suasana kebun yang sejuk dan menenangkan, cocok untuk relaksasi keluarga.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Lokasi Kebun -->
+        <div class="row mb-5 py-4 bg-light rounded-4">
+            <div class="col-12 mb-4 text-center">
+                <div class="section-header">
+                    <span class="badge bg-info-soft mb-2 animate__animated animate__fadeIn">Lokasi</span>
+                    <h2 class="mb-3 animate__animated animate__fadeIn">Kunjungi Kebun Kami</h2>
+                </div>
+            </div>
+            
+            <div class="col-lg-6 mb-4 mb-lg-0">
+                <div class="pe-lg-4">
+                    <div class="d-flex mb-4 animate__animated animate__fadeInLeft">
+                        <div class="icon-circle bg-info-soft text-info me-3">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div>
+                            <h4 class="h5">Alamat Kebun</h4>
+                            <p class="text-muted mb-0">
+                                Jl. Kebun Apel No. 123, Desa Segar Alami<br>
+                                Kecamatan Buah Segar, Kota Apel Indah<br>
+                                Jawa Barat, Indonesia 12345
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="d-flex mb-4 animate__animated animate__fadeInLeft">
+                        <div class="icon-circle bg-info-soft text-info me-3">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div>
+                            <h4 class="h5">Jam Operasional</h4>
+                            <p class="text-muted mb-0">
+                                <strong>Senin-Jumat:</strong> 08.00 - 17.00 WIB<br>
+                                <strong>Sabtu-Minggu:</strong> 07.00 - 18.00 WIB
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="d-flex animate__animated animate__fadeInLeft">
+                        <div class="icon-circle bg-info-soft text-info me-3">
+                            <i class="fas fa-phone-alt"></i>
+                        </div>
+                        <div>
+                            <h4 class="h5">Kontak Kami</h4>
+                            <p class="text-muted mb-0">
+                                <strong>Telepon:</strong> (022) 1234-5678<br>
+                                <strong>Email:</strong> info@kebunapelpetik.com<br>
+                                <strong>WhatsApp:</strong> +62 812 3456 7890
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-6">
+                <div class="map-container rounded-4 overflow-hidden shadow-lg animate__animated animate__fadeInRight">
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3953.123456789012!2d110.12345678901234!3d-7.123456789012345!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zN8KwMDcnMjQuNCJTIDExMMKwMDcnMjQuNCJF!5e0!3m2!1sen!2sid!4v1234567890123!5m2!1sen!2sid" 
+                        width="100%" 
+                        height="400" 
+                        style="border:0;" 
+                        allowfullscreen="" 
+                        loading="lazy"
+                        class="map-iframe">
+                    </iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Custom CSS untuk halaman profil -->
+<style>
+    :root {
+        --primary: #2e7d32;
+        --primary-soft: rgba(46, 125, 50, 0.1);
+        --success: #388e3c;
+        --success-soft: rgba(56, 142, 60, 0.1);
+        --warning: #f57c00;
+        --warning-soft: rgba(245, 124, 0, 0.1);
+        --info: #0288d1;
+        --info-soft: rgba(2, 136, 209, 0.1);
+    }
+    
+    body {
+        font-family: 'Poppins', sans-serif;
+        color: #333;
+    }
+    
+    .profil-section {
+        background-color: #f8f9fa;
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .text-gradient-primary {
+        background: linear-gradient(to right, #2e7d32, #4caf50);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+    }
+    
+    .divider {
+        width: 80px;
+        height: 4px;
+        background: linear-gradient(to right, #2e7d32, #4caf50);
+        margin: 20px auto;
+    }
+    
+    .section-header .badge {
+        font-size: 0.8rem;
+        letter-spacing: 0.5px;
+        padding: 6px 12px;
+        font-weight: 500;
+        text-transform: uppercase;
+    }
+    
+    .bg-primary-soft {
+        background-color: var(--primary-soft) !important;
+    }
+    
+    .bg-success-soft {
+        background-color: var(--success-soft) !important;
+    }
+    
+    .bg-warning-soft {
+        background-color: var(--warning-soft) !important;
+    }
+    
+    .bg-info-soft {
+        background-color: var(--info-soft) !important;
+    }
+    
+    .text-primary {
+        color: var(--primary) !important;
+    }
+    
+    .text-success {
+        color: var(--success) !important;
+    }
+    
+    .text-warning {
+        color: var(--warning) !important;
+    }
+    
+    .text-info {
+        color: var(--info) !important;
+    }
+    
+    .icon-circle {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+    }
+    
+    .icon-xl {
+        width: 70px;
+        height: 70px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .image-container {
+        position: relative;
+        transition: all 0.3s ease;
+    }
+    
+    .image-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.05));
+        opacity: 0.5;
+    }
+    
+    .hover-zoom {
+        transition: transform 0.5s ease;
+    }
+    
+    .image-container:hover .hover-zoom {
+        transform: scale(1.05);
+    }
+    
+    .hover-lift {
+        transition: all 0.3s ease;
+    }
+    
+    .hover-lift:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15) !important;
+    }
+    
+    .mission-list {
+        padding-left: 20px;
+    }
+    
+    .mission-list li {
+        margin-bottom: 8px;
+    }
+    
+    .map-container {
+        position: relative;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+    
+    .map-iframe {
+        border: none;
+        filter: grayscale(20%) contrast(1.1);
+    }
+    
+    @media (max-width: 768px) {
+        .profil-section {
+            padding: 60px 0;
+        }
+        
+        .section-header h2 {
+            font-size: 1.8rem;
+        }
+        
+        .icon-circle {
+            width: 40px;
+            height: 40px;
+            font-size: 0.9rem;
+        }
+    }
+</style>
+
+<!-- Menambahkan Font Awesome untuk ikon -->
+<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+<!-- Menambahkan Animate.css untuk animasi -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+{% endblock %}

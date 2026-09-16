@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container d-flex justify-content-center align-items-center min-vh-100">
+    <div class="card shadow-lg p-4" style="max-width: 500px; width: 100%; border-radius: 15px;">
+        <div class="card-body text-center">
+            <h2 class="mb-4 text-primary">Ringkasan Pemesanan</h2>
+            <hr>
+
+            <p><strong>Kode Booking:</strong> {{ booking.booking_code }}</p>
+            <p><strong>Nama:</strong> {{ booking.name }}</p>
+            <p><strong>Email:</strong> {{ booking.email }}</p>
+            <p><strong>Nomor WhatsApp:</strong> {{ booking.whatsapp }}</p>
+            <p><strong>Alamat:</strong> {{ booking.address }}</p>
+            <p><strong>Jumlah Tiket:</strong> {{ booking.pax }}</p>
+            <p><strong>Tanggal Kunjungan:</strong> {{ booking.visit_date }}</p>
+            <p><strong>Metode Pembayaran:</strong> {{ booking.get_payment_method_display }}</p>
+
+            <h3 class="mt-4 text-success">Detail Pembayaran</h3>
+            <hr>
+
+            {% if payment_info.qr_code %}
+                <p>Silakan scan QR Code untuk pembayaran:</p>
+                <img src="{{ payment_info.qr_code }}" alt="QR Code Pembayaran" width="200" class="img-fluid rounded">
+            {% endif %}
+
+            {% if payment_info.number %}
+                <p>Atau transfer ke nomor rekening:</p>
+                <h4 class="text-danger">{{ payment_info.number }}</h4>
+            {% endif %}
+
+            <form action="{% url 'confirm_booking' %}" method="post" class="mt-4">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-success btn-lg w-100" style="border-radius: 10px;">
+                    Konfirmasi & Book Now
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

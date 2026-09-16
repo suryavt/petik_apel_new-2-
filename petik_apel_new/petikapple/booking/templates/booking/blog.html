@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2 class="text-center mb-4">Blog Kebun Petik Apel</h2>
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+        {% for artikel in artikels|slice:":9" %}
+        <div class="col">
+            <div class="card h-100 shadow-sm border-0 rounded-3 overflow-hidden">
+                <img src="{% if artikel.gambar %}{{ artikel.gambar.url }}{% else %}{% static 'carousel/1.jpg' %}{% endif %}" class="card-img-top" alt="{{ artikel.judul }}">
+                <div class="card-body d-flex flex-column">
+                    <h5 class="card-title text-primary">{{ artikel.judul }}</h5>
+                    <p class="card-text flex-grow-1">{{ artikel.deskripsi|truncatewords:20 }}</p>
+                    <a href="{{ artikel.url }}" target="_blank" class="btn btn-outline-primary mt-auto">Baca Selengkapnya</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

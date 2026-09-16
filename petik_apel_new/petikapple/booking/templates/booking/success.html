@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block extra_head %}
+<style>
+    .fade-in {
+        animation: fadeIn 1s ease-in-out;
+    }
+    @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="container text-center">
+    <h2 class="fade-in">🎉 Pemesanan Berhasil! 🎉</h2>
+    <p><strong>Kode Booking:</strong> {{ booking.booking_code }}</p>
+    <p>Terima kasih <strong>{{ booking.name }}</strong> telah melakukan pemesanan.</p>
+    <p>Detail pemesanan telah dikirim ke email <strong>{{ booking.email }}</strong>.</p>
+    <p>Silakan tunjukkan bukti pemesanan saat tiba di kebun.</p>
+    
+    <a href="{% url 'home' %}" class="btn btn-primary">Kembali ke Beranda</a>
+</div>
+{% endblock %}

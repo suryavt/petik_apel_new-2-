@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Petik Apel{% endblock %}</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* Custom CSS untuk navbar */
+        .navbar {
+            border-radius: 20px; /* Membuat sudut navbar melengkung */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Menambahkan bayangan */
+            margin: 10px; /* Memberikan jarak dari tepi layar */
+            background: linear-gradient(135deg, #4CAF50, #81C784); /* Gradasi hijau muda */
+            transition: all 0.3s ease; /* Transisi untuk efek scroll */
+            position: fixed; /* Navbar tetap di atas saat di-scroll */
+            width: calc(100% - 20px); /* Lebar navbar disesuaikan dengan margin */
+            top: 0px; /* Navbar ditempatkan di bagian paling atas */
+            z-index: 1000; /* Pastikan navbar di atas konten lain */
+            opacity: 1; /* Opasitas awal */
+            visibility: visible; /* Navbar terlihat secara default */
+        }
+
+        .navbar.hidden {
+            opacity: 0; /* Navbar sepenuhnya transparan */
+            visibility: hidden; /* Navbar disembunyikan */
+        }
+
+        .navbar-brand {
+            font-weight: bold;
+            color: #fff !important; /* Warna teks brand */
+        }
+
+        .navbar-nav .nav-link {
+            color: #fff !important; /* Warna teks link */
+            margin: 0 10px; /* Jarak antar link */
+            padding: 8px 15px; /* Padding untuk link */
+            border-radius: 15px; /* Membuat sudut link melengkung */
+            transition: all 0.3s ease; /* Transisi efek hover */
+        }
+
+        .navbar-nav .nav-link:hover {
+            background-color: rgba(255, 255, 255, 0.2); /* Warna background saat hover */
+            color: #fff !important; /* Warna teks saat hover */
+        }
+
+        /* Style untuk menu aktif */
+        .navbar-nav .nav-link.active {
+            font-weight: bold; /* Teks menjadi bold */
+            background-color: rgba(255, 255, 255, 0.3); /* Latar belakang lebih terang */
+        }
+
+        .navbar-toggler {
+            border: none; /* Menghilangkan border pada toggler */
+        }
+
+        .navbar-toggler:focus {
+            outline: none; /* Menghilangkan outline saat focus */
+        }
+
+        /* Custom CSS untuk footer */
+        .footer {
+            border-radius: 20px 20px 0 0; /* Membuat sudut footer melengkung di atas */
+            box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.1); /* Menambahkan bayangan di atas */
+            margin-top: 20px; /* Jarak dari konten */
+            background: linear-gradient(135deg, #388E3C, #4CAF50); /* Gradasi hijau gelap */
+            color: #fff; /* Warna teks footer */
+            padding: 20px 0; /* Padding atas dan bawah */
+            text-align: center; /* Teks di tengah */
+        }
+
+        .footer p {
+            margin: 0; /* Menghilangkan margin default pada paragraf */
+        }
+
+        /* Padding untuk konten agar tidak tertutup navbar */
+        body {
+            padding-top: 70px; /* Sesuaikan dengan tinggi navbar */
+        }
+    </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light">
+  <div class="container">
+    <a class="navbar-brand" href="{% url 'home' %}">Fresh Agro</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'home' %}">Beranda</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'profile' %}">Profil</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'blog' %}">Blog</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'book_ticket' %}">Pesan Tiket</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Content Section -->
+{% block content %}
+<!-- Contoh konten untuk menguji scroll -->
+<div style="height: 1500px; padding: 20px;">
+    <h1>Konten Website</h1>
+    <p>Scroll ke bawah untuk melihat efek navbar menghilang.</p>
+</div>
+{% endblock %}
+
+<!-- Footer -->
+<footer class="footer">
+    <p>&copy; 2025 Petik Apel. Semua Hak Dilindungi.</p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    // Script untuk efek navbar menghilang saat di-scroll
+    let lastScrollTop = 0; // Simpan posisi scroll terakhir
+    const navbar = document.querySelector('.navbar');
+
+    window.addEventListener('scroll', function() {
+        const scrollTop = window.scrollY || document.documentElement.scrollTop;
+
+        if (scrollTop > lastScrollTop) {
+            // Scroll ke bawah
+            navbar.classList.add('hidden'); // Sembunyikan navbar
+        } else {
+            // Scroll ke atas
+            navbar.classList.remove('hidden'); // Tampilkan navbar
+        }
+
+        lastScrollTop = scrollTop; // Simpan posisi scroll terakhir
+    });
+
+    // Script untuk menambahkan kelas 'active' pada menu yang sedang aktif
+    const currentUrl = window.location.href; // Ambil URL saat ini
+    const navLinks = document.querySelectorAll('.navbar-nav .nav-link');
+
+    navLinks.forEach(link => {
+        if (link.href === currentUrl) {
+            link.classList.add('active'); // Tambahkan kelas 'active' jika URL cocok
+        }
+    });
+</script>
+
+<style>
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(10px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+    
+    @keyframes pulse {
+        0% { transform: scale(1); }
+        50% { transform: scale(1.05); }
+        100% { transform: scale(1); }
+    }
+    
+    #chatbot-toggle {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        background: linear-gradient(135deg, #4CAF50, #2E7D32);
+        color: white;
+        border-radius: 50%;
+        width: 70px;
+        height: 70px;
+        font-size: 32px;
+        border: none;
+        cursor: pointer;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        z-index: 999;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s ease;
+        animation: pulse 2s infinite;
+    }
+    
+    #chatbot-toggle:hover {
+        transform: scale(1.1);
+        box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+    }
+    
+    #chatbot-container {
+        position: fixed;
+        bottom: 100px;
+        right: 20px;
+        width: 350px;
+        max-height: 500px;
+        background: white;
+        border-radius: 15px;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        overflow: hidden;
+        display: none;
+        flex-direction: column;
+        z-index: 999;
+        font-family: 'Segoe UI', Roboto, sans-serif;
+        transform: translateY(20px);
+        opacity: 0;
+        transition: all 0.3s ease;
+    }
+    
+    #chatbot-container.show {
+        display: flex;
+        transform: translateY(0);
+        opacity: 1;
+    }
+    
+    #chatbot-header {
+        background: linear-gradient(135deg, #4CAF50, #2E7D32);
+        color: white;
+        padding: 15px;
+        font-weight: bold;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+    
+    #chatbot-header::before {
+        content: "";
+        display: block;
+        width: 10px;
+        height: 10px;
+        background-color: #fff;
+        border-radius: 50%;
+        animation: pulse 1.5s infinite;
+    }
+    
+    #chatbot-messages {
+        padding: 15px;
+        height: 350px;
+        overflow-y: auto;
+        background: #f5f5f5;
+        scroll-behavior: smooth;
+    }
+    
+    .chat-bubble {
+        max-width: 85%;
+        padding: 12px 15px;
+        margin-bottom: 12px;
+        border-radius: 18px;
+        clear: both;
+        position: relative;
+        animation: fadeIn 0.3s ease;
+        line-height: 1.4;
+        font-size: 14px;
+    }
+    
+    .bot {
+        background: #e8f5e9;
+        float: left;
+        border-bottom-left-radius: 5px;
+        color: #2E7D32;
+    }
+    
+    .user {
+        background: #4CAF50;
+        float: right;
+        border-bottom-right-radius: 5px;
+        color: white;
+    }
+    
+    #chatbot-input {
+        display: flex;
+        border-top: 1px solid #e0e0e0;
+        background: white;
+    }
+    
+    #chatbot-input input {
+        flex: 1;
+        padding: 12px 15px;
+        border: none;
+        outline: none;
+        font-size: 14px;
+    }
+    
+    #chatbot-input button {
+        background: #4CAF50;
+        border: none;
+        color: white;
+        padding: 0 15px;
+        cursor: pointer;
+        transition: background 0.2s;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    #chatbot-input button:hover {
+        background: #3e8e41;
+    }
+    
+    .quick-replies {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-top: 10px;
+        margin-bottom: 15px;
+    }
+    
+    .quick-reply {
+        background: white;
+        border: 1px solid #4CAF50;
+        color: #4CAF50;
+        padding: 6px 12px;
+        border-radius: 15px;
+        font-size: 12px;
+        cursor: pointer;
+        transition: all 0.2s;
+    }
+    
+    .quick-reply:hover {
+        background: #4CAF50;
+        color: white;
+    }
+    
+    .typing-indicator {
+        display: flex;
+        padding: 10px 15px;
+        background: #e8f5e9;
+        border-radius: 18px;
+        float: left;
+        margin-bottom: 12px;
+        width: fit-content;
+    }
+    
+    .typing-dot {
+        width: 8px;
+        height: 8px;
+        background-color: #4CAF50;
+        border-radius: 50%;
+        margin: 0 2px;
+        animation: typingAnimation 1.4s infinite ease-in-out;
+    }
+    
+    .typing-dot:nth-child(1) {
+        animation-delay: 0s;
+    }
+    
+    .typing-dot:nth-child(2) {
+        animation-delay: 0.2s;
+    }
+    
+    .typing-dot:nth-child(3) {
+        animation-delay: 0.4s;
+    }
+    
+    @keyframes typingAnimation {
+        0%, 60%, 100% {
+            transform: translateY(0);
+        }
+        30% {
+            transform: translateY(-5px);
+        }
+    }
+    
+    /* Responsive design */
+    @media (max-width: 480px) {
+        #chatbot-container {
+            width: 90%;
+            right: 5%;
+            bottom: 80px;
+        }
+    }
+</style>
+
+<button id="chatbot-toggle">🍏</button>
+
+<div id="chatbot-container">
+    <div id="chatbot-header">Kebun Apel Segar �</div>
+    <div id="chatbot-messages">
+        <div class="chat-bubble bot">Halo! Selamat datang di Kebun Apel Segar 🍎</div>
+        <div class="chat-bubble bot">Saya siap membantu Anda dengan informasi tentang kebun apel kami. Ada yang bisa saya bantu?</div>
+        <div class="quick-replies">
+            <div class="quick-reply" onclick="sendQuickReply('Jadwal buka')">Jadwal buka</div>
+            <div class="quick-reply" onclick="sendQuickReply('Harga tiket')">Harga tiket</div>
+            <div class="quick-reply" onclick="sendQuickReply('Aktivitas')">Aktivitas</div>
+        </div>
+    </div>
+    <div id="chatbot-input">
+        <input type="text" id="user-input" placeholder="Tanya tentang kebun apel..." onkeypress="handleKeyPress(event)" />
+        <button onclick="sendMessage()">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M22 2L11 13" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M22 2L15 22L11 13L2 9L22 2Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </button>
+    </div>
+</div>
+
+<script>
+    const toggle = document.getElementById("chatbot-toggle");
+    const container = document.getElementById("chatbot-container");
+    const userInput = document.getElementById("user-input");
+    const messages = document.getElementById("chatbot-messages");
+    
+    // Show/hide chat with animation
+    toggle.addEventListener("click", () => {
+        container.classList.toggle("show");
+    });
+    
+    // Handle Enter key press
+    function handleKeyPress(e) {
+        if (e.key === "Enter") {
+            sendMessage();
+        }
+    }
+    
+    // Send message from quick reply
+    function sendQuickReply(reply) {
+        userInput.value = reply;
+        sendMessage();
+    }
+    
+    // Main function to send message
+    function sendMessage() {
+        const msg = userInput.value.trim();
+        
+        if (!msg) return;
+        
+        // Add user message
+        messages.innerHTML += `<div class="chat-bubble user">${msg}</div>`;
+        userInput.value = "";
+        messages.scrollTop = messages.scrollHeight;
+        
+        // Show typing indicator
+        const typingIndicator = document.createElement("div");
+        typingIndicator.className = "typing-indicator";
+        typingIndicator.innerHTML = `
+            <div class="typing-dot"></div>
+            <div class="typing-dot"></div>
+            <div class="typing-dot"></div>
+        `;
+        messages.appendChild(typingIndicator);
+        messages.scrollTop = messages.scrollHeight;
+        
+        // Process and reply after delay
+        setTimeout(() => {
+            typingIndicator.remove();
+            const reply = generateReply(msg.toLowerCase());
+            messages.innerHTML += `<div class="chat-bubble bot">${reply}</div>`;
+            
+            // Add quick replies if needed
+            addQuickReplies(msg.toLowerCase());
+            
+            messages.scrollTop = messages.scrollHeight;
+        }, 1000 + Math.random() * 1000);
+    }
+    
+    // Generate bot reply based on user input
+    function generateReply(message) {
+        if (message.includes("halo") || message.includes("hi") || message.includes("hai")) {
+            return "Halo lagi! Ada yang bisa saya bantu tentang kebun apel kami? 😊";
+        } else if (message.includes("jadwal") || message.includes("buka")) {
+            return "🕒 Kebun kami buka:\n- Senin-Jumat: 08.00-17.00\n- Sabtu-Minggu: 07.00-18.00\n*Tutup pada hari libur nasional";
+        } else if (message.includes("tiket") || message.includes("harga") || message.includes("biaya")) {
+            return "💰 Harga tiket:\n- Dewasa: Rp25.000\n- Anak (3-12 tahun): Rp15.000\n- Bayi: Gratis\n*Termasuk 1kg apel untuk dipetik sendiri!";
+        } else if (message.includes("lokasi") || message.includes("alamat") || message.includes("maps")) {
+            return "📍 Lokasi kami di: Jalan Kebun Apel No. 123, Malang\n<a href='https://maps.google.com' target='_blank' style='color: #4CAF50;'>Buka di Google Maps</a>";
+        } else if (message.includes("aktivitas") || message.includes("wisata") || message.includes("kegiatan")) {
+            return "🍎 Aktivitas seru di kebun kami:\n1. Memetik apel sendiri\n2. Tour kebun dengan pemandu\n3. Kelas membuat pai apel\n4. Foto-foto di spot instagramable\n5. Area bermain anak";
+        } else if (message.includes("varietas") || message.includes("jenis")) {
+            return "🌱 Kami menanam beberapa varietas apel:\n- Manalagi (paling populer)\n- Anna (manis)\n- Rome Beauty (besar)\n- Fuji (renyah)\nSetiap varietas memiliki musim panen berbeda.";
+        } else if (message.includes("panen") || message.includes("musim")) {
+            return "📅 Musim panen utama:\n- April-Juni: Manalagi\n- Juli-September: Anna\n- Oktober-Desember: Rome Beauty\n*Bisa berubah tergantung cuaca";
+        } else if (message.includes("kontak") || message.includes("telpon") || message.includes("hubung")) {
+            return "📞 Hubungi kami:\n- Telepon: (0341) 1234567\n- WhatsApp: <a href='https://wa.me/6281234567890' target='_blank' style='color: #4CAF50;'>0812-3456-7890</a>\n- Email: info@kebunapelsegar.com";
+        } else if (message.includes("booking") || message.includes("pesan") || message.includes("reservasi")) {
+            return "📲 Untuk booking kunjungan grup (>10 orang), silakan hubungi WhatsApp kami di <a href='https://wa.me/6281234567890' target='_blank' style='color: #4CAF50;'>link ini</a> atau telepon (0341) 1234567.";
+        } else if (message.includes("fasilitas")) {
+            return "🏠 Fasilitas kami:\n- Area parkir luas\n- Toilet bersih\n- Warung makan\n- Mushola\n- Area istirahat\n- Toko oleh-oleh";
+        } else if (message.includes("makan") || message.includes("restoran") || message.includes("kuliner")) {
+            return "🍽️ Menu andalan warung kami:\n- Pai apel hangat\n- Jus apel segar\n- Selai apel homemade\n- Dodol apel\n- Cider apel tradisional";
+        } else if (message.includes("event") || message.includes("acara")) {
+            return "🎉 Event rutin kami:\n1. Festival Panen Apel (Agustus)\n2. Kelas Memasak Mingguan\n3. Lomba Memetik Apel untuk anak\n4. Pameran Produk Olahan Apel\n*Cek Instagram @kebunapelsegar untuk info terbaru";
+        } else {
+            return "Maaf, saya tidak mengerti pertanyaan Anda. Berikut beberapa info yang mungkin Anda butuhkan:\n- Jadwal buka\n- Harga tiket\n- Aktivitas di kebun\n- Lokasi\nSilakan tanya lebih spesifik ya! 😊";
+        }
+    }
+    
+    // Add context-aware quick replies
+    function addQuickReplies(message) {
+        let quickReplies = "";
+        
+        if (message.includes("jadwal") || message.includes("buka")) {
+            quickReplies = `
+                <div class="quick-reply" onclick="sendQuickReply('Harga tiket')">Harga tiket</div>
+                <div class="quick-reply" onclick="sendQuickReply('Lokasi')">Lokasi</div>
+            `;
+        } else if (message.includes("tiket") || message.includes("harga")) {
+            quickReplies = `
+                <div class="quick-reply" onclick="sendQuickReply('Jadwal buka')">Jadwal buka</div>
+                <div class="quick-reply" onclick="sendQuickReply('Aktivitas')">Aktivitas</div>
+            `;
+        } else if (message.includes("aktivitas") || message.includes("wisata")) {
+            quickReplies = `
+                <div class="quick-reply" onclick="sendQuickReply('Harga tiket')">Harga tiket</div>
+                <div class="quick-reply" onclick="sendQuickReply('Event')">Event</div>
+            `;
+        } else {
+            quickReplies = `
+                <div class="quick-reply" onclick="sendQuickReply('Jadwal buka')">Jadwal buka</div>
+                <div class="quick-reply" onclick="sendQuickReply('Harga tiket')">Harga tiket</div>
+                <div class="quick-reply" onclick="sendQuickReply('Aktivitas')">Aktivitas</div>
+                <div class="quick-reply" onclick="sendQuickReply('Lokasi')">Lokasi</div>
+            `;
+        }
+        
+        messages.innerHTML += `<div class="quick-replies">${quickReplies}</div>`;
+        messages.scrollTop = messages.scrollHeight;
+    }
+</script>
+  
+  
+</body>
+</html>

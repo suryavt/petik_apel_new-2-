@@ -1,0 +1,197 @@
+{% extends "base.html" %}
+
+{% block content %}
+<style>
+    /* Gradient Background */
+    .bg-gradient-primary {
+        background: linear-gradient(135deg, #6a11cb, #2575fc);
+    }
+
+    /* Gradient Button */
+    .btn-gradient-success {
+        background: linear-gradient(135deg, #28a745, #218838);
+        border: none;
+        color: white;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .btn-gradient-success:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 15px rgba(40, 167, 69, 0.4);
+    }
+
+    /* Card Styling */
+    .card {
+        border: none;
+        border-radius: 15px;
+        overflow: hidden;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Form Input Styling */
+    .form-control {
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        padding: 10px;
+        transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .form-control:focus {
+        border-color: #6a11cb;
+        box-shadow: 0 0 0 0.2rem rgba(106, 17, 203, 0.25);
+    }
+
+    /* Label Styling */
+    .form-label {
+        font-weight: 600;
+        color: #333;
+    }
+
+    /* Additional Spacing */
+    .mb-3 {
+        margin-bottom: 1.5rem !important;
+    }
+
+    /* Header Text */
+    .card-header h2 {
+        font-size: 2rem;
+        font-weight: 700;
+    }
+
+    .card-header p {
+        font-size: 1rem;
+        color: rgba(255, 255, 255, 0.8);
+    }
+</style>
+
+<div class="container my-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-6">
+            <div class="card shadow-lg border-0">
+                <div class="card-header bg-gradient-primary text-white text-center py-4">
+                    <h2 class="mb-0 fw-bold">Form Pemesanan Tiket</h2>
+                    <p class="mt-2 mb-0">Isi formulir di bawah ini untuk memesan tiket Anda.</p>
+                </div>
+                <div class="card-body p-4">
+                    <form method="POST" class="needs-validation" id="booking-form" novalidate>
+                        {% csrf_token %}
+                        
+                        <!-- Nama Lengkap -->
+                        <div class="mb-3">
+                            <label for="id_name" class="form-label fw-bold">Nama Lengkap</label>
+                            {{ form.name }}
+                            <div class="invalid-feedback">
+                                Harap masukkan nama lengkap Anda.
+                            </div>
+                        </div>
+
+                        <!-- Email -->
+                        <div class="mb-3">
+                            <label for="id_email" class="form-label fw-bold">Alamat Email</label>
+                            {{ form.email }}
+                            <div class="invalid-feedback">
+                                Harap masukkan alamat email yang valid.
+                            </div>
+                        </div>
+
+                        <!-- WhatsApp -->
+                        <div class="mb-3">
+                            <label for="id_whatsapp" class="form-label fw-bold">Nomor WhatsApp</label>
+                            {{ form.whatsapp }}
+                            <div class="invalid-feedback">
+                                Harap masukkan nomor WhatsApp yang valid.
+                            </div>
+                        </div>
+
+                        <!-- Alamat -->
+                        <div class="mb-3">
+                            <label for="id_address" class="form-label fw-bold">Alamat</label>
+                            {{ form.address }}
+                            <div class="invalid-feedback">
+                                Harap masukkan alamat lengkap Anda.
+                            </div>
+                        </div>
+
+                        <!-- Jumlah Orang (Pax) -->
+                        <div class="mb-3">
+                            <label for="id_pax" class="form-label fw-bold">Jumlah Orang</label>
+                            {{ form.pax }}
+                            <div class="invalid-feedback">
+                                Harap masukkan jumlah orang.
+                            </div>
+                        </div>
+
+                        <!-- Tanggal Kunjungan -->
+                        <div class="mb-3">
+                            <label for="id_visit_date" class="form-label fw-bold">Tanggal Kunjungan</label>
+                            {{ form.visit_date }}
+                            <div class="invalid-feedback">
+                                Harap pilih tanggal kunjungan.
+                            </div>
+                        </div>
+
+                        <!-- Metode Pembayaran -->
+                        <div class="mb-4">
+                            <label for="id_payment_method" class="form-label fw-bold">Metode Pembayaran</label>
+                            {{ form.payment_method }}
+                            <div class="invalid-feedback">
+                                Harap pilih metode pembayaran.
+                            </div>
+                        </div>
+
+                        <!-- Tombol Submit -->
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-lg btn-gradient-success fw-bold">
+                                Pesan Sekarang
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- JavaScript Validation -->
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const form = document.getElementById("booking-form");
+
+        form.addEventListener("submit", function (event) {
+            let valid = true;
+
+            // Validasi Email
+            const emailField = document.getElementById("id_email");
+            if (!emailField.value.includes("@")) {
+                emailField.classList.add("is-invalid");
+                emailField.nextElementSibling.textContent = "Alamat email harus mengandung '@'.";
+                valid = false;
+            } else {
+                emailField.classList.remove("is-invalid");
+            }
+
+            // Validasi WhatsApp (hanya angka)
+            const whatsappField = document.getElementById("id_whatsapp");
+            const whatsappRegex = /^\d+$/;
+            if (!whatsappRegex.test(whatsappField.value)) {
+                whatsappField.classList.add("is-invalid");
+                whatsappField.nextElementSibling.textContent = "Nomor WhatsApp hanya boleh berisi angka.";
+                valid = false;
+            } else {
+                whatsappField.classList.remove("is-invalid");
+            }
+
+            // Jika ada field yang tidak valid, cegah form dikirim
+            if (!valid) {
+                event.preventDefault();
+            }
+        });
+    });
+</script>
+
+{% endblock %}
